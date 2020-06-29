@@ -1,0 +1,19 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: suecharo/dashi:1.0.0
+    container_name: dashi
+    volumes:
+      - ${PWD}:${PWD}
+    environment:
+      - DASHI_HOST=0.0.0.0
+      - DASHI_PORT=8080
+      - DASHI_DEBUG=False
+    ports:
+      - 8080:8080
+    restart: always
+    working_dir: ${PWD}
+    command: ["dashi"]

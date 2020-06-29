@@ -45,11 +45,11 @@ paths:
           description: "An unexpected error occurred."
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /all:
+  /inspect-workflow:
     get:
-      summary: "Get all information."
+      summary: "Inspect workflow."
       description: |
-        This endpoint is used to extract all information.
+        This endpoint is used to inspect workflow.
         The parameter should be used one of `wf_url`, `wf_content` or `wf_file`.
       consumes:
         # - application/x-www-form-urlencoded
@@ -97,11 +97,11 @@ paths:
           description: "An unexpected error occurred."
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /type:
+  /inspect-workflow/type:
     get:
-      summary: "Get workflow type."
+      summary: "Inspect workflow type."
       description: |
-        This endpoint is used to extract workflow type.
+        This endpoint is used to inspect workflow type.
         The parameter should be used one of `wf_url`, `wf_content` or `wf_file`.
       consumes:
         # - application/x-www-form-urlencoded
@@ -149,11 +149,11 @@ paths:
           description: "An unexpected error occurred."
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /version:
+  /inspect-workflow/version:
     get:
-      summary: "Get version."
+      summary: "Inspect workflow version."
       description: |
-        This endpoint is used to extract workflow version.
+        This endpoint is used to inspect workflow version.
         The parameter should be used one of `wf_url`, `wf_content` or `wf_file`.
       consumes:
         # - application/x-www-form-urlencoded
@@ -201,10 +201,9 @@ paths:
           description: "An unexpected error occurred."
           schema:
             $ref: "#/definitions/ErrorResponse"
-
-  /parameters:
+  /inspect-workflow/parameters:
     get:
-      summary: "Get workflow parameters."
+      summary: "Inspect workflow parameters."
       description: |
         This endpoint is used to extract workflow parameters.
         The parameter should be used one of `wf_url`, `wf_content` or `wf_file`.

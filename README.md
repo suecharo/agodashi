@@ -6,6 +6,8 @@
 [![mypy](https://github.com/suecharo/dashi/workflows/mypy/badge.svg)](https://github.com/suecharo/dashi/actions?query=workflow%3Amypy) -->
 [![Apache License](https://img.shields.io/badge/license-Apache%202.0-orange.svg?style=flat&color=important)](http://www.apache.org/licenses/LICENSE-2.0)
 
+[dashi API specification - Swagger UI](https://suecharo.github.io/dashi-swagger-ui/)
+
 ## Install and Run
 
 Dashi supports Python 3.6 or newer.

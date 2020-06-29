@@ -80,7 +80,7 @@ paths:
         "200":
           description: "The request is done successfully."
           schema:
-            $ref: "#/definitions/AllInfomation"
+            $ref: "#/definitions/AllInformation"
         "400":
           description: "The request is malformed."
           schema:
@@ -287,7 +287,7 @@ definitions:
         type: array
         items:
           type: string
-  AllInfomation:
+  AllInformation:
     type: object
     properties:
       wf_type:

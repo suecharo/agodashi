@@ -1,0 +1,323 @@
+swagger: "2.0"
+info:
+  description: "API definition for dashi. Dashi extract type or version or parameters of workflow written in workflow languages."
+  version: "1.0.0"
+  title: "dashi API specification"
+  license:
+    name: "Apache 2.0"
+    url: "https://github.com/suecharo/dashi/LICENSE"
+externalDocs:
+  description: "Find out more about dashi"
+  url: "https://github.com/suecharo/dashi"
+host: "localhost:8080"
+schemes:
+  - https
+  - http
+paths:
+  /service-info:
+    get:
+      summary: "Get information about the API service"
+      description: |
+        Response to the name and version of workflow engines to be used inside the API Service.
+        Also, it may be possible to extract the type, version and parameters of a workflow without using workflow engines.
+        Therefore, workflow types and versions supported by this service are also responded to.
+        The logic for determining workflow type and version is completely implementation-dependent.
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: "The request is done successfully."
+          schema:
+            $ref: "#/definitions/ServiceInfo"
+        "400":
+          description: "The request is malformed."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "401":
+          description: "The request is unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: "The requester is not authorized to perform this action."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: "An unexpected error occurred."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /all:
+    get:
+      summary: "Get all information."
+      description: |
+        This endpoint is used to extract all information.
+        The parameter should be used one of `wf_url`, `wf_content` or `wf_file`.
+      consumes:
+        # - application/x-www-form-urlencoded
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - name: "wf_url"
+          in: formData
+          description: |
+            The raw url of a workflow file.
+            For example, githubcontent.com.
+            It must be http or https, but this part is implementation-dependent.
+          type: string
+        - name: "wf_content"
+          in: formData
+          description: |
+            Include the contents of the workflow as is.
+            Please encode it properly.
+          type: string
+          format: binary
+        - name: "wf_file"
+          in: formData
+          description: |
+            Use this if you want to attach workflow as a file.
+          type: file
+      responses:
+        "200":
+          description: "The request is done successfully."
+          schema:
+            $ref: "#/definitions/AllInfomation"
+        "400":
+          description: "The request is malformed."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "401":
+          description: "The request is unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: "The requester is not authorized to perform this action."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: "An unexpected error occurred."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /type:
+    get:
+      summary: "Get workflow type."
+      description: |
+        This endpoint is used to extract workflow type.
+        The parameter should be used one of `wf_url`, `wf_content` or `wf_file`.
+      consumes:
+        # - application/x-www-form-urlencoded
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - name: "wf_url"
+          in: formData
+          description: |
+            The raw url of a workflow file.
+            For example, githubcontent.com.
+            It must be http or https, but this part is implementation-dependent.
+          type: string
+        - name: "wf_content"
+          in: formData
+          description: |
+            Include the contents of the workflow as is.
+            Please encode it properly.
+          type: string
+          format: binary
+        - name: "wf_file"
+          in: formData
+          description: |
+            Use this if you want to attach workflow as a file.
+          type: file
+      responses:
+        "200":
+          description: "The request is done successfully."
+          schema:
+            $ref: "#/definitions/Type"
+        "400":
+          description: "The request is malformed."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "401":
+          description: "The request is unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: "The requester is not authorized to perform this action."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: "An unexpected error occurred."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /version:
+    get:
+      summary: "Get version."
+      description: |
+        This endpoint is used to extract workflow version.
+        The parameter should be used one of `wf_url`, `wf_content` or `wf_file`.
+      consumes:
+        # - application/x-www-form-urlencoded
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - name: "wf_url"
+          in: formData
+          description: |
+            The raw url of a workflow file.
+            For example, githubcontent.com.
+            It must be http or https, but this part is implementation-dependent.
+          type: string
+        - name: "wf_content"
+          in: formData
+          description: |
+            Include the contents of the workflow as is.
+            Please encode it properly.
+          type: string
+          format: binary
+        - name: "wf_file"
+          in: formData
+          description: |
+            Use this if you want to attach workflow as a file.
+          type: file
+      responses:
+        "200":
+          description: "The request is done successfully."
+          schema:
+            $ref: "#/definitions/Version"
+        "400":
+          description: "The request is malformed."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "401":
+          description: "The request is unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: "The requester is not authorized to perform this action."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: "An unexpected error occurred."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /parameters:
+    get:
+      summary: "Get workflow parameters."
+      description: |
+        This endpoint is used to extract workflow parameters.
+        The parameter should be used one of `wf_url`, `wf_content` or `wf_file`.
+      consumes:
+        # - application/x-www-form-urlencoded
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - name: "wf_url"
+          in: formData
+          description: |
+            The raw url of a workflow file.
+            For example, githubcontent.com.
+            It must be http or https, but this part is implementation-dependent.
+          type: string
+        - name: "wf_content"
+          in: formData
+          description: |
+            Include the contents of the workflow as is.
+            Please encode it properly.
+          type: string
+          format: binary
+        - name: "wf_file"
+          in: formData
+          description: |
+            Use this if you want to attach workflow as a file.
+          type: file
+      responses:
+        "200":
+          description: "The request is done successfully."
+          schema:
+            $ref: "#/definitions/Parameters"
+        "400":
+          description: "The request is malformed."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "401":
+          description: "The request is unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: "The requester is not authorized to perform this action."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: "An unexpected error occurred."
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+definitions:
+  ServiceInfo:
+    type: object
+    properties:
+      workflow_engines:
+        type: array
+        items:
+          type: object
+          properties:
+            engine_name:
+              type: string
+              example: "cwltool, cromwell, etc."
+            engine_version:
+              type: string
+            supported_languages:
+              type: array
+              items:
+                $ref: "#/definitions/SupportedLanguage"
+      supported_languages:
+        type: array
+        items:
+          $ref: "#/definitions/SupportedLanguage"
+  SupportedLanguage:
+    type: object
+    properties:
+      language_name:
+        type: string
+        example: "CWL, WDL, etc."
+      language_versions:
+        type: array
+        items:
+          type: string
+  AllInfomation:
+    type: object
+    properties:
+      wf_type:
+        type: string
+      wf_version:
+        type: string
+      wf_params:
+        type: string
+        format: binary
+  Type:
+    type: object
+    properties:
+      wf_type:
+        type: string
+  Version:
+    type: object
+    properties:
+      wf_type:
+        type: string
+  Parameters:
+    type: object
+    properties:
+      wf_params:
+        type: string
+        format: binary
+  ErrorResponse:
+    type: object
+    properties:
+      msg:
+        type: string
+      status_code:
+        type: integer
+        example: "200, 404, 500, etc."

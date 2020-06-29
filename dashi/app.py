@@ -9,7 +9,7 @@ from typing import Dict, List, Optional, Union
 from flask import Flask, Response, current_app, jsonify
 from werkzeug.exceptions import HTTPException
 
-from dashi.const import DEFAULT_HOST, DEFAULT_PORT, DEFAULT_CROS
+from dashi.const import DEFAULT_CROS, DEFAULT_HOST, DEFAULT_PORT
 from dashi.controller import app_bp
 from dashi.type import ErrorResponse
 
@@ -122,6 +122,8 @@ def add_headers(app: Flask) -> Flask:
             os.environ.get("DASHI_CROS", DEFAULT_CROS)
 
         return response
+
+    return app
 
 
 def create_app(params: Dict[str, Union[str, int]]) -> Flask:

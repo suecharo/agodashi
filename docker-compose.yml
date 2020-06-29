@@ -12,6 +12,7 @@ services:
       - DASHI_HOST=0.0.0.0
       - DASHI_PORT=8080
       - DASHI_DEBUG=False
+      - DASHI_CROS=*
     ports:
       - 8080:8080
     restart: always

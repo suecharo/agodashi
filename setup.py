@@ -21,7 +21,8 @@ def read_requirements_txt() -> List[str]:
 def main() -> None:
     setup(name="dashi",
           version="1.0.0",
-          description="API server for parsing workflows written in workflow languages",
+          description="An API server for parsing workflows written in " +
+                      "workflow languages",
           long_description=LONG_DESCRIPTION.open(mode="r").read(),
           long_description_content_type="text/markdown",
           author="suecharo",

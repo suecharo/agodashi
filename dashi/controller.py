@@ -4,6 +4,7 @@ from flask import Blueprint, Response, jsonify
 
 from dashi.const import GET_STATUS_CODE
 from dashi.type import AllInformation, Parameters, ServiceInfo, Type, Version
+from dashi.util import generate_service_info
 
 app_bp = Blueprint("dashi", __name__)
 
@@ -18,17 +19,17 @@ def get_service_info() -> Response:
     to. The logic for determining workflow type and version is completely
     implementation-dependent.
     """
-    res_body: ServiceInfo = {}
+    res_body: ServiceInfo = generate_service_info()
     response: Response = jsonify(res_body)
     response.status_code = GET_STATUS_CODE
 
     return response
 
 
-@app_bp.route("/all", methods=["GET"])
-def get_all() -> Response:
+@app_bp.route("/inspect-workflow", methods=["GET"])
+def inspect_workflow() -> Response:
     """
-    This endpoint is used to extract all information. The parameter should be
+    This endpoint is used to inspect workflow. The parameter should be
     used one of wf_url, wf_content or wf_file.
     """
     res_body: AllInformation = {}
@@ -38,10 +39,10 @@ def get_all() -> Response:
     return response
 
 
-@app_bp.route("/type", methods=["GET"])
-def get_type() -> Response:
+@app_bp.route("/inspect-workflow/type", methods=["GET"])
+def inspect_workflow_type() -> Response:
     """
-    This endpoint is used to extract workflow type. The parameter should be
+    This endpoint is used to inspect workflow type. The parameter should be
     used one of wf_url, wf_content or wf_file.
     """
     res_body: Type = {}
@@ -51,10 +52,10 @@ def get_type() -> Response:
     return response
 
 
-@app_bp.route("/version", methods=["GET"])
-def get_version() -> Response:
+@app_bp.route("/inspect-workflow/version", methods=["GET"])
+def inspect_workflow_version() -> Response:
     """
-    This endpoint is used to extract workflow version. The parameter should be
+    This endpoint is used to inspect workflow version. The parameter should be
     used one of wf_url, wf_content or wf_file.
     """
     res_body: Version = {}
@@ -64,10 +65,10 @@ def get_version() -> Response:
     return response
 
 
-@app_bp.route("/parameters", methods=["GET"])
-def get_parameters() -> Response:
+@app_bp.route("/inspect-workflow/parameters", methods=["GET"])
+def inspect_workflow_parameters() -> Response:
     """
-    This endpoint is used to extract workflow parameters. The parameter should
+    This endpoint is used to inspect workflow parameters. The parameter should
     be used one of wf_url, wf_content or wf_file.
     """
     res_body: Parameters = {}

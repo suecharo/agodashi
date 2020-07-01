@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # coding: utf-8
-from flask import Blueprint, Response, jsonify
+from flask import Blueprint, Response, jsonify, request
 
 from dashi.const import GET_STATUS_CODE
 from dashi.type import AllInformation, Parameters, ServiceInfo, Type, Version
-from dashi.util import generate_service_info
+from dashi.util import generate_service_info, validate_and_extract_request
 
 app_bp = Blueprint("dashi", __name__)
 
@@ -32,7 +32,14 @@ def inspect_workflow() -> Response:
     This endpoint is used to inspect workflow. The parameter should be
     used one of wf_url, wf_content or wf_file.
     """
-    res_body: AllInformation = {}
+    wf_content: str = validate_and_extract_request(
+        request.form, request.files)  # type: ignore
+    print(wf_content)
+    res_body: AllInformation = {
+        "wf_type": "",
+        "wf_version": "",
+        "wf_params": ""
+    }
     response: Response = jsonify(res_body)
     response.status_code = GET_STATUS_CODE
 
@@ -45,7 +52,9 @@ def inspect_workflow_type() -> Response:
     This endpoint is used to inspect workflow type. The parameter should be
     used one of wf_url, wf_content or wf_file.
     """
-    res_body: Type = {}
+    res_body: Type = {
+        "wf_type": ""
+    }
     response: Response = jsonify(res_body)
     response.status_code = GET_STATUS_CODE
 
@@ -58,7 +67,9 @@ def inspect_workflow_version() -> Response:
     This endpoint is used to inspect workflow version. The parameter should be
     used one of wf_url, wf_content or wf_file.
     """
-    res_body: Version = {}
+    res_body: Version = {
+        "wf_version": ""
+    }
     response: Response = jsonify(res_body)
     response.status_code = GET_STATUS_CODE
 
@@ -71,7 +82,9 @@ def inspect_workflow_parameters() -> Response:
     This endpoint is used to inspect workflow parameters. The parameter should
     be used one of wf_url, wf_content or wf_file.
     """
-    res_body: Parameters = {}
+    res_body: Parameters = {
+        "wf_params": ""
+    }
     response: Response = jsonify(res_body)
     response.status_code = GET_STATUS_CODE
 

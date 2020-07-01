@@ -3,6 +3,10 @@
 import itertools
 from typing import List, Set
 
+import requests
+from flask import abort
+from werkzeug.datastructures import ImmutableMultiDict
+
 from dashi.cwl import get_cwltool_supported_languages, get_cwltool_version
 from dashi.type import ServiceInfo, SupportedLanguage, WorkflowEngine
 
@@ -39,3 +43,42 @@ def generate_all_supported_languages() -> List[SupportedLanguage]:
         })
 
     return all_supported_languages
+
+
+def validate_and_extract_request(
+        form_data: ImmutableMultiDict,  # type: ignore
+        form_files: ImmutableMultiDict) -> str:  # type: ignore
+
+    require_keys: List[str] = ["wf_url", "wf_content", "wf_file"]
+    data_keys: List[str] = list(form_data.keys())
+    require_data_keys: List[str] = \
+        [key for key in require_keys if key in data_keys]
+    file_keys: List[str] = list(form_files.keys())
+    require_file_keys: List[str] = \
+        [key for key in require_keys if key in file_keys]
+    keys: List[str] = require_data_keys + require_file_keys
+    if len(keys) != 1:
+        abort(400, "Please add one of wf_url, wf_content, or wf_file to the "
+                   "request as form data.")
+    key: str = keys[0]
+    content: str
+    if key == "wf_url":
+        content = get_workflow_content_from_url(form_data[key])
+    elif key == "wf_content":
+        content = form_data[key]
+    elif key == "wf_file":
+        content = form_files[key].read().decode("utf-8")
+
+    return content
+
+
+def get_workflow_content_from_url(wf_url: str) -> str:
+    try:
+        res = requests.get(wf_url)
+    except Exception:
+        abort(400, f"The wf_url: ${wf_url} you entered returned errors")
+    if res.status_code != 200:
+        abort(400, f"The wf_url: ${wf_url} you entered returned a status "
+                   f"code ${res.status_code}")
+
+    return res.text

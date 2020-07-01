@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-from typing import List
+from typing import List, cast
 
 from cwltool.update import ALLUPDATES
 from cwltool.utils import versionstring
@@ -9,7 +9,8 @@ from dashi.type import SupportedLanguage
 
 
 def get_cwltool_version() -> str:
-    return versionstring().split(" ")[1]
+    version: str = cast(str, versionstring().split(" ")[1])
+    return version
 
 
 def get_cwltool_supported_languages() -> List[SupportedLanguage]:

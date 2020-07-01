@@ -40,7 +40,7 @@ class Version(TypedDict):
 
 
 class Parameters(TypedDict):
-    wf_parameters: str
+    wf_params: str
 
 
 class ErrorResponse(TypedDict):

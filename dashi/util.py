@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # coding: utf-8
 import itertools
+import re
 from typing import List, Set
 
 import requests
 from flask import abort
 from werkzeug.datastructures import ImmutableMultiDict
 
-from dashi.cwl import get_cwltool_supported_languages, get_cwltool_version
+from dashi.cwl import (extract_cwl_wf_params, extract_cwl_wf_version,
+                       get_cwltool_supported_languages, get_cwltool_version)
 from dashi.type import ServiceInfo, SupportedLanguage, WorkflowEngine
 
 
@@ -76,9 +78,32 @@ def get_workflow_content_from_url(wf_url: str) -> str:
     try:
         res = requests.get(wf_url)
     except Exception:
-        abort(400, f"The wf_url: ${wf_url} you entered returned errors")
+        abort(400, f"The wf_url: {wf_url} you entered returned errors")
     if res.status_code != 200:
-        abort(400, f"The wf_url: ${wf_url} you entered returned a status "
-                   f"code ${res.status_code}")
+        abort(400, f"The wf_url: {wf_url} you entered returned a status "
+                   f"code {res.status_code}")
 
     return res.text
+
+
+def extract_wf_type(wf_content: str) -> str:
+    wf_type: str
+    for line in wf_content.splitlines():
+        if re.search(r"(cwlVersion)", line):
+            wf_type = "CWL"
+
+    return wf_type
+
+
+def extract_wf_version(wf_content: str, wf_type: str) -> str:
+    if wf_type == "CWL":
+        return extract_cwl_wf_version(wf_content)
+    else:
+        abort(400, "The requested workflow is not supported.")
+
+
+def extract_wf_params(wf_content: str, wf_type: str) -> str:
+    if wf_type == "CWL":
+        return extract_cwl_wf_params(wf_content)
+    else:
+        abort(400, "The requested workflow is not supported.")

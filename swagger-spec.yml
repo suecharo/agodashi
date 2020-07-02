@@ -61,7 +61,7 @@ paths:
           in: formData
           description: |
             The raw url of a workflow file.
-            For example, githubcontent.com.
+            For example, raw.githubusercontent.com.
             It must be http or https, but this part is implementation-dependent.
           type: string
         - name: "wf_content"

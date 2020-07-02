@@ -19,11 +19,10 @@ def test_get_service_info(delete_env_vars: None) -> None:
     app.testing = True
     client: FlaskClient[Response] = app.test_client()
     response: Response = client.get("/service-info")
+    res_data: ServiceInfo = response.get_json()
 
     print(response)
-    print(response.data)
-
-    res_data: ServiceInfo = response.get_json()
+    print(res_data)
 
     assert response.status_code == 200
     assert "supported_languages" in res_data

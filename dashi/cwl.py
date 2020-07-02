@@ -61,7 +61,7 @@ def extract_cwl_wf_params(wf_content: str) -> str:
         abort(400,
               f"cwltool ended with status {process.returncode}\n"
               f"The stderr of cwltool is as follows:\n"
-              f"{process.stderr.decode('utf-8')}"
+              f"{process.stderr}"
               )
 
-    return process.stdout.decode("utf-8")
+    return process.stdout

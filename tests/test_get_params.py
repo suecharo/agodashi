@@ -7,8 +7,8 @@ from flask import Flask
 from flask.testing import FlaskClient
 from flask.wrappers import Response
 
-from dashi.app import create_app, handle_default_params, parse_args
-from dashi.type import ErrorResponse, Type
+from agodashi.app import create_app, handle_default_params, parse_args
+from agodashi.type import ErrorResponse, Type
 
 from .resource_list import CWL_WF, CWL_WF_PACKED, CWL_WF_REMOTE
 

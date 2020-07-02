@@ -1,12 +1,12 @@
-# dashi
+# agodashi
 
-[![pytest](https://github.com/suecharo/dashi/workflows/pytest/badge.svg)](https://github.com/suecharo/dashi/actions?query=workflow%3Apytest)
-[![flake8](https://github.com/suecharo/dashi/workflows/flake8/badge.svg)](https://github.com/suecharo/dashi/actions?query=workflow%3Aflake8)
-[![isort](https://github.com/suecharo/dashi/workflows/isort/badge.svg)](https://github.com/suecharo/dashi/actions?query=workflow%3Aisort)
-[![mypy](https://github.com/suecharo/dashi/workflows/mypy/badge.svg)](https://github.com/suecharo/dashi/actions?query=workflow%3Amypy)
+[![pytest](https://github.com/suecharo/agodashi/workflows/pytest/badge.svg)](https://github.com/suecharo/agodashi/actions?query=workflow%3Apytest)
+[![flake8](https://github.com/suecharo/agodashi/workflows/flake8/badge.svg)](https://github.com/suecharo/agodashi/actions?query=workflow%3Aflake8)
+[![isort](https://github.com/suecharo/agodashi/workflows/isort/badge.svg)](https://github.com/suecharo/agodashi/actions?query=workflow%3Aisort)
+[![mypy](https://github.com/suecharo/agodashi/workflows/mypy/badge.svg)](https://github.com/suecharo/agodashi/actions?query=workflow%3Amypy)
 [![Apache License](https://img.shields.io/badge/license-Apache%202.0-orange.svg?style=flat&color=important)](http://www.apache.org/licenses/LICENSE-2.0)
 
-Dashi is a simple REST API server.
+Agodashi is a simple REST API server.
 It takes a workflow file written in workflow language as input and returns workflow type, workflow version and workflow parameters template.
 Currently, supported workflow languages are as follows:
 
@@ -21,11 +21,11 @@ In the future, we plan to support the following languages.
 
 ## Install and Run
 
-Dashi supports Python 3.6 or newer.
+Agodashi supports Python 3.6 or newer.
 
 ```bash
-$ pip3 install dashi
-$ dashi
+$ pip3 install agodashi
+$ agodashi
 ```
 
 ### Docker
@@ -42,13 +42,13 @@ $ docker-compose logs
 
 ## Usage
 
-As API specifications, please check [SwaggerUI - Dashi API Spec](https://suecharo.github.io/dashi-swagger-ui/)
+As API specifications, please check [SwaggerUI - Agodashi API Spec](https://suecharo.github.io/agodashi-swagger-ui/)
 
-The help for the Dashi startup command is as follows.
+The help for the Agodashi startup command is as follows.
 
 ```bash
-$ dashi --help
-usage: dashi [-h] [--host] [-p] [--debug]
+$ agodashi --help
+usage: agodashi [-h] [--host] [-p] [--debug]
 
 An API server for parsing workflows written in workflow languages
 
@@ -62,7 +62,7 @@ optional arguments:
 As the simplest example of a REST API Request, here is the result of a `GET /inspect-workflow`.
 
 ```json
-GET /inspect-workflow -F 'wf_url=https://raw.githubusercontent.com/suecharo/dashi/master/tests/resources/cwl/trimming_and_qc_packed.cwl'
+GET /inspect-workflow -F 'wf_url=https://raw.githubusercontent.com/suecharo/agodashi/master/tests/resources/cwl/trimming_and_qc_packed.cwl'
 
 {
   "wf_params": "nthreads: 2  # default value of type \"int\". (optional)\nfastq_2:  # type \"File\"\n    class: File\n    path: a/file/path\nfastq_1:  # type \"File\"\n    class: File\n    path: a/file/path\n",
@@ -96,4 +96,4 @@ $ pytest .
 
 ## License
 
-[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0). See the [LICENSE](https://github.com/suecharo/dashi/blob/master/LICENSE).
+[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0). See the [LICENSE](https://github.com/suecharo/agodashi/blob/master/LICENSE).

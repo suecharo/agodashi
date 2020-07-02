@@ -11,7 +11,7 @@ from cwltool.update import ALLUPDATES
 from cwltool.utils import versionstring
 from flask import abort
 
-from dashi.type import SupportedLanguage
+from agodashi.type import SupportedLanguage
 
 
 def get_cwltool_version() -> str:

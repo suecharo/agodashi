@@ -9,9 +9,9 @@ from typing import Dict, List, Optional, Union
 from flask import Flask, Response, current_app, jsonify
 from werkzeug.exceptions import HTTPException
 
-from dashi.const import DEFAULT_CROS, DEFAULT_HOST, DEFAULT_PORT
-from dashi.controller import app_bp
-from dashi.type import ErrorResponse
+from agodashi.const import DEFAULT_CROS, DEFAULT_HOST, DEFAULT_PORT
+from agodashi.controller import app_bp
+from agodashi.type import ErrorResponse
 
 
 def parse_args(sys_args: List[str]) -> Namespace:
@@ -57,21 +57,21 @@ def handle_default_params(args: Namespace) -> Dict[str, Union[str, int]]:
 
 def handle_default_host(host: Optional[List[str]]) -> str:
     if host is None:
-        return os.environ.get("DASHI_HOST", DEFAULT_HOST)
+        return os.environ.get("AGODASHI_HOST", DEFAULT_HOST)
 
     return host[0]
 
 
 def handle_default_port(port: Optional[List[str]]) -> int:
     if port is None:
-        return int(os.environ.get("DASHI_PORT", DEFAULT_PORT))
+        return int(os.environ.get("AGODASHI_PORT", DEFAULT_PORT))
 
     return int(port[0])
 
 
 def handle_default_debug(debug: bool) -> bool:
     if debug is False:
-        return str2bool(os.environ.get("DASHI_DEBUG", False))
+        return str2bool(os.environ.get("AGODASHI_DEBUG", False))
 
     return debug
 
@@ -119,7 +119,7 @@ def add_headers(app: Flask) -> Flask:
     @app.after_request
     def after_request_func(response: Response) -> Response:
         response.headers["Access-Control-Allow-Origin"] = \
-            os.environ.get("DASHI_CROS", DEFAULT_CROS)
+            os.environ.get("AGODASHI_CROS", DEFAULT_CROS)
 
         return response
 

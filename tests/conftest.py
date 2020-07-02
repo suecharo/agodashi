@@ -9,5 +9,5 @@ from _pytest.monkeypatch import MonkeyPatch
 @pytest.fixture
 def delete_env_vars(monkeypatch: MonkeyPatch) -> None:
     for key in os.environ.keys():
-        if key.startswith("DASHI"):
+        if key.startswith("AGODASHI"):
             monkeypatch.delenv(key)

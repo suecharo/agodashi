@@ -7,8 +7,8 @@ from flask import Flask
 from flask.testing import FlaskClient
 from flask.wrappers import Response
 
-from dashi.app import create_app, handle_default_params, parse_args
-from dashi.type import ServiceInfo
+from agodashi.app import create_app, handle_default_params, parse_args
+from agodashi.type import ServiceInfo
 
 
 def test_get_service_info(delete_env_vars: None) -> None:

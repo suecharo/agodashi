@@ -2,12 +2,12 @@
 # coding: utf-8
 from flask import Blueprint, Response, jsonify, request
 
-from dashi.const import GET_STATUS_CODE
-from dashi.type import AllInformation, Parameters, ServiceInfo, Type, Version
-from dashi.util import (extract_wf_params, extract_wf_type, extract_wf_version,
-                        generate_service_info, validate_and_extract_request)
+from agodashi.const import GET_STATUS_CODE
+from agodashi.type import AllInformation, Parameters, ServiceInfo, Type, Version
+from agodashi.util import (extract_wf_params, extract_wf_type, extract_wf_version,
+                           generate_service_info, validate_and_extract_request)
 
-app_bp = Blueprint("dashi", __name__)
+app_bp = Blueprint("agodashi", __name__)
 
 
 @app_bp.route("/service-info", methods=["GET"])

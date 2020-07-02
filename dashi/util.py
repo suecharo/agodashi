@@ -8,9 +8,9 @@ import requests
 from flask import abort
 from werkzeug.datastructures import ImmutableMultiDict
 
-from dashi.cwl import (extract_cwl_wf_params, extract_cwl_wf_version,
-                       get_cwltool_supported_languages, get_cwltool_version)
-from dashi.type import ServiceInfo, SupportedLanguage, WorkflowEngine
+from agodashi.cwl import (extract_cwl_wf_params, extract_cwl_wf_version,
+                          get_cwltool_supported_languages, get_cwltool_version)
+from agodashi.type import ServiceInfo, SupportedLanguage, WorkflowEngine
 
 
 def generate_service_info() -> ServiceInfo:

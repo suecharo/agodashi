@@ -19,7 +19,7 @@ def read_requirements_txt() -> List[str]:
 
 
 def main() -> None:
-    setup(name="dashi",
+    setup(name="agodashi",
           version="1.0.0",
           description="An API server for parsing workflows written in " +
                       "workflow languages",
@@ -27,18 +27,18 @@ def main() -> None:
           long_description_content_type="text/markdown",
           author="suecharo",
           author_email="suehiro619@gmail.com",
-          url="https://github.com/suecharo/dashi",
+          url="https://github.com/suecharo/agodashi",
           license="Apache2.0",
           python_requires=">=3.6",
           platforms="any",
           include_package_data=True,
           zip_safe=False,
           classifiers=["Programming Language :: Python"],
-          packages=["dashi"],
+          packages=["agodashi"],
           install_requires=read_requirements_txt(),
           entry_points={
               "console_scripts": [
-                  "dashi=dashi.app:main",
+                  "agodashi=agodashi.app:main",
               ]
           }
           )

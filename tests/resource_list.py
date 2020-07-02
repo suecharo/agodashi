@@ -4,7 +4,7 @@ from pathlib import Path
 
 RESOURCE_DIR: Path = Path(__file__).parent.joinpath("resources").resolve()
 RESOURCE_DIR_URL: str = "https://raw.githubusercontent.com/suecharo/" +\
-    "dashi/master/tests/resources/"
+    "agodashi/master/tests/resources/"
 
 CWL_DIR: Path = RESOURCE_DIR.joinpath("cwl")
 CWL_DIR_URL: str = RESOURCE_DIR_URL + "cwl/"

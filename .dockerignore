@@ -2,7 +2,7 @@
 .github
 .gitignore
 .vscode
-dashi.egg-info
+agodashi.egg-info
 docker-compose.dev.yml
 docker-compose.yml
 Dockerfile

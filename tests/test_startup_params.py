@@ -8,8 +8,8 @@ from flask import Flask
 from flask.testing import FlaskClient
 from flask.wrappers import Response
 
-from dashi.app import create_app, handle_default_params, parse_args
-from dashi.const import DEFAULT_HOST, DEFAULT_PORT
+from agodashi.app import create_app, handle_default_params, parse_args
+from agodashi.const import DEFAULT_HOST, DEFAULT_PORT
 
 
 def test_default_params(delete_env_vars: None) -> None:
@@ -22,10 +22,10 @@ def test_default_params(delete_env_vars: None) -> None:
 
 
 def test_env_vars(delete_env_vars: None, monkeypatch: MonkeyPatch) -> None:
-    monkeypatch.setenv("DASHI_HOST", "127.0.0.1")
-    monkeypatch.setenv("DASHI_PORT", "8888")
-    monkeypatch.setenv("DASHI_DEBUG", "True")
-    monkeypatch.setenv("DASHI_CROS", "test_cros")
+    monkeypatch.setenv("AGODASHI_HOST", "127.0.0.1")
+    monkeypatch.setenv("AGODASHI_PORT", "8888")
+    monkeypatch.setenv("AGODASHI_DEBUG", "True")
+    monkeypatch.setenv("AGODASHI_CROS", "test_cros")
 
     args: Namespace = parse_args([])
     params: Dict[str, Union[str, int]] = handle_default_params(args)

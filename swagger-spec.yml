@@ -1,14 +1,14 @@
 swagger: "2.0"
 info:
-  description: "API definition for dashi. Dashi extract type or version or parameters of workflow written in workflow languages."
+  description: "API definition of agodashi. Agodashi extract type or version or parameters of workflow written in workflow languages."
   version: "1.0.0"
-  title: "dashi API specification"
+  title: "agodashi API specification"
   license:
     name: "Apache 2.0"
-    url: "https://github.com/suecharo/dashi/LICENSE"
+    url: "https://github.com/suecharo/agodashi/LICENSE"
 externalDocs:
-  description: "Find out more about dashi"
-  url: "https://github.com/suecharo/dashi"
+  description: "Find out more about agodashi"
+  url: "https://github.com/suecharo/agodashi"
 host: "localhost:8080"
 schemes:
   - https

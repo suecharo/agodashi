@@ -4,15 +4,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: dashi
-    container_name: dashi_dev
+    image: agodashi
+    container_name: agodashi_dev
     volumes:
       - ${PWD}:${PWD}
     environment:
-      - DASHI_HOST=0.0.0.0
-      - DASHI_PORT=8080
-      - DASHI_DEBUG=True
-      - DASHI_CROS=*
+      - AGODASHI_HOST=0.0.0.0
+      - AGODASHI_PORT=8080
+      - AGODASHI_DEBUG=True
+      - AGODASHI_CROS=*
     ports:
       - 8080:8080
     restart: always

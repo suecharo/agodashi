@@ -50,7 +50,7 @@ def extract_cwl_wf_params(wf_content: str) -> str:
     with open(wf_file, mode="w") as f:
         f.write(wf_content)
         f.flush()
-    process = subprocess.run(
+    process = subprocess.run(  # type: ignore
         ["cwltool", "--make-template", wf_file],
         capture_output=True,
         encoding="utf-8",
@@ -63,4 +63,4 @@ def extract_cwl_wf_params(wf_content: str) -> str:
               f"The stderr of cwltool is as follows:\n{process.stderr}"
               )
 
-    return process.stdout
+    return process.stdout  # type: ignore

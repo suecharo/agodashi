@@ -3,9 +3,11 @@
 from flask import Blueprint, Response, jsonify, request
 
 from agodashi.const import GET_STATUS_CODE
-from agodashi.type import AllInformation, Parameters, ServiceInfo, Type, Version
-from agodashi.util import (extract_wf_params, extract_wf_type, extract_wf_version,
-                           generate_service_info, validate_and_extract_request)
+from agodashi.type import (AllInformation, Parameters, ServiceInfo, Type,
+                           Version)
+from agodashi.util import (extract_wf_params, extract_wf_type,
+                           extract_wf_version, generate_service_info,
+                           validate_and_extract_request)
 
 app_bp = Blueprint("agodashi", __name__)
 

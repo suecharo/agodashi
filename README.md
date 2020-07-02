@@ -1,4 +1,4 @@
-# agodashi
+# Agodashi
 
 [![pytest](https://github.com/suecharo/agodashi/workflows/pytest/badge.svg)](https://github.com/suecharo/agodashi/actions?query=workflow%3Apytest)
 [![flake8](https://github.com/suecharo/agodashi/workflows/flake8/badge.svg)](https://github.com/suecharo/agodashi/actions?query=workflow%3Aflake8)

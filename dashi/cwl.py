@@ -55,13 +55,13 @@ def extract_cwl_wf_params(wf_content: str) -> str:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         encoding="utf-8",
-        text=True
     )
     os.remove(wf_file)
     if process.returncode != 0:
         abort(400,
               f"cwltool ended with status {process.returncode}\n"
-              f"The stderr of cwltool is as follows:\n{process.stderr}"
+              f"The stderr of cwltool is as follows:\n"
+              f"{process.stderr.decode('utf-8')}"
               )
 
-    return process.stdout
+    return process.stdout.decode("utf-8")

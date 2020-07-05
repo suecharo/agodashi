@@ -23,9 +23,9 @@ def test_wf(delete_env_vars: None) -> None:
     with CWL_WF.open(mode="r") as f:
         wf_content: str = f.read()
     response: Response = \
-        client.get("/inspect-workflow",
-                   data={"wf_content": wf_content},
-                   content_type="multipart/form-data")
+        client.post("/inspect-workflow",
+                    data={"wf_content": wf_content},
+                    content_type="multipart/form-data")
     res_data: ErrorResponse = response.get_json()
 
     print(response)
@@ -45,9 +45,9 @@ def test_wf_remote(delete_env_vars: None) -> None:
     with CWL_WF_REMOTE.open(mode="r") as f:
         wf_content: str = f.read()
     response: Response = \
-        client.get("/inspect-workflow",
-                   data={"wf_content": wf_content},
-                   content_type="multipart/form-data")
+        client.post("/inspect-workflow",
+                    data={"wf_content": wf_content},
+                    content_type="multipart/form-data")
     res_data: AllInformation = response.get_json()
 
     print(response)
@@ -71,9 +71,9 @@ def test_wf_packed(delete_env_vars: None) -> None:
     with CWL_WF_PACKED.open(mode="r") as f:
         wf_content: str = f.read()
     response: Response = \
-        client.get("/inspect-workflow",
-                   data={"wf_content": wf_content},
-                   content_type="multipart/form-data")
+        client.post("/inspect-workflow",
+                    data={"wf_content": wf_content},
+                    content_type="multipart/form-data")
     res_data: AllInformation = response.get_json()
 
     print(response)

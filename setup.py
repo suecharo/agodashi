@@ -20,7 +20,7 @@ def read_requirements_txt() -> List[str]:
 
 def main() -> None:
     setup(name="agodashi",
-          version="1.0.0",
+          version="1.0.1",
           description="An API server for parsing workflows written in " +
                       "workflow languages",
           long_description=LONG_DESCRIPTION.open(mode="r").read(),

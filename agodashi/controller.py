@@ -2,7 +2,7 @@
 # coding: utf-8
 from flask import Blueprint, Response, jsonify, request
 
-from agodashi.const import GET_STATUS_CODE
+from agodashi.const import GET_STATUS_CODE, POST_STATUS_CODE
 from agodashi.type import (AllInformation, Parameters, ServiceInfo, Type,
                            Version)
 from agodashi.util import (extract_wf_params, extract_wf_type,
@@ -29,7 +29,7 @@ def get_service_info() -> Response:
     return response
 
 
-@app_bp.route("/inspect-workflow", methods=["GET"])
+@app_bp.route("/inspect-workflow", methods=["POST"])
 def inspect_workflow() -> Response:
     """
     This endpoint is used to inspect workflow. The parameter should be
@@ -44,12 +44,12 @@ def inspect_workflow() -> Response:
         "wf_params": extract_wf_params(wf_content, wf_type)
     }
     response: Response = jsonify(res_body)
-    response.status_code = GET_STATUS_CODE
+    response.status_code = POST_STATUS_CODE
 
     return response
 
 
-@app_bp.route("/inspect-workflow/type", methods=["GET"])
+@app_bp.route("/inspect-workflow/type", methods=["POST"])
 def inspect_workflow_type() -> Response:
     """
     This endpoint is used to inspect workflow type. The parameter should be
@@ -62,12 +62,12 @@ def inspect_workflow_type() -> Response:
         "wf_type": wf_type
     }
     response: Response = jsonify(res_body)
-    response.status_code = GET_STATUS_CODE
+    response.status_code = POST_STATUS_CODE
 
     return response
 
 
-@app_bp.route("/inspect-workflow/version", methods=["GET"])
+@app_bp.route("/inspect-workflow/version", methods=["POST"])
 def inspect_workflow_version() -> Response:
     """
     This endpoint is used to inspect workflow version. The parameter should be
@@ -80,12 +80,12 @@ def inspect_workflow_version() -> Response:
         "wf_version": extract_wf_version(wf_content, wf_type)
     }
     response: Response = jsonify(res_body)
-    response.status_code = GET_STATUS_CODE
+    response.status_code = POST_STATUS_CODE
 
     return response
 
 
-@app_bp.route("/inspect-workflow/parameters", methods=["GET"])
+@app_bp.route("/inspect-workflow/parameters", methods=["POST"])
 def inspect_workflow_parameters() -> Response:
     """
     This endpoint is used to inspect workflow parameters. The parameter should
@@ -98,6 +98,6 @@ def inspect_workflow_parameters() -> Response:
         "wf_params": extract_wf_params(wf_content, wf_type)
     }
     response: Response = jsonify(res_body)
-    response.status_code = GET_STATUS_CODE
+    response.status_code = POST_STATUS_CODE
 
     return response

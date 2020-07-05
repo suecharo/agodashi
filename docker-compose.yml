@@ -1,7 +1,7 @@
 version: "3"
 services:
   app:
-    image: suecharo/agodashi:1.0.0
+    image: suecharo/agodashi:1.0.1
     container_name: agodashi
     volumes:
       - ${PWD}:${PWD}

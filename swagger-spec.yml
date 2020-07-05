@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   description: "API definition of agodashi. Agodashi extract type or version or parameters of workflow written in workflow languages."
-  version: "1.0.0"
+  version: "1.0.1"
   title: "agodashi API specification"
   license:
     name: "Apache 2.0"
@@ -46,7 +46,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /inspect-workflow:
-    get:
+    post:
       summary: "Inspect workflow."
       description: |
         This endpoint is used to inspect workflow.
@@ -98,7 +98,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /inspect-workflow/type:
-    get:
+    post:
       summary: "Inspect workflow type."
       description: |
         This endpoint is used to inspect workflow type.
@@ -150,7 +150,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /inspect-workflow/version:
-    get:
+    post:
       summary: "Inspect workflow version."
       description: |
         This endpoint is used to inspect workflow version.
@@ -202,7 +202,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /inspect-workflow/parameters:
-    get:
+    post:
       summary: "Inspect workflow parameters."
       description: |
         This endpoint is used to extract workflow parameters.

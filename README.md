@@ -59,10 +59,10 @@ optional arguments:
   --debug       Enable debug mode of Flask.
 ```
 
-As the simplest example of a REST API Request, here is the result of a `GET /inspect-workflow`.
+As the simplest example of a REST API Request, here is the result of a `POST /inspect-workflow`.
 
 ```json
-GET /inspect-workflow -F 'wf_url=https://raw.githubusercontent.com/suecharo/agodashi/master/tests/resources/cwl/trimming_and_qc_packed.cwl'
+POST /inspect-workflow -F 'wf_url=https://raw.githubusercontent.com/suecharo/agodashi/master/tests/resources/cwl/trimming_and_qc_packed.cwl'
 
 {
   "wf_params": "nthreads: 2  # default value of type \"int\". (optional)\nfastq_2:  # type \"File\"\n    class: File\n    path: a/file/path\nfastq_1:  # type \"File\"\n    class: File\n    path: a/file/path\n",

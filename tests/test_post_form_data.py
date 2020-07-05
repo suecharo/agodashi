@@ -21,8 +21,8 @@ def test_post_wf_url(delete_env_vars: None) -> None:
     app.testing = True
     client: FlaskClient[Response] = app.test_client()
     response: Response = \
-        client.get("/inspect-workflow", data={"wf_url": CWL_WF_PACKED_URL},
-                   content_type="multipart/form-data")
+        client.post("/inspect-workflow", data={"wf_url": CWL_WF_PACKED_URL},
+                    content_type="multipart/form-data")
     res_data: AllInformation = response.get_json()
 
     print(response)
@@ -39,9 +39,9 @@ def test_post_wf_url_failed(delete_env_vars: None) -> None:
     app.testing = True
     client: FlaskClient[Response] = app.test_client()
     response: Response = \
-        client.get("/inspect-workflow",
-                   data={"wf_url": "http://localhost:1234"},
-                   content_type="multipart/form-data")
+        client.post("/inspect-workflow",
+                    data={"wf_url": "http://localhost:1234"},
+                    content_type="multipart/form-data")
     res_data: AllInformation = response.get_json()
 
     print(response)
@@ -60,8 +60,8 @@ def test_post_wf_content(delete_env_vars: None) -> None:
     with CWL_WF_PACKED.open(mode="r") as f:
         wf_content: str = f.read()
     response: Response = \
-        client.get("/inspect-workflow", data={"wf_content": wf_content},
-                   content_type="multipart/form-data")
+        client.post("/inspect-workflow", data={"wf_content": wf_content},
+                    content_type="multipart/form-data")
     res_data: AllInformation = response.get_json()
 
     print(response)
@@ -78,10 +78,10 @@ def test_post_wf_file(delete_env_vars: None) -> None:
     app.testing = True
     client: FlaskClient[Response] = app.test_client()
     response: Response = \
-        client.get("/inspect-workflow",
-                   data={"wf_file": (CWL_WF_PACKED.open(
-                       mode="rb"), CWL_WF_PACKED.name)},
-                   content_type="multipart/form-data")
+        client.post("/inspect-workflow",
+                    data={"wf_file": (CWL_WF_PACKED.open(
+                        mode="rb"), CWL_WF_PACKED.name)},
+                    content_type="multipart/form-data")
     res_data: AllInformation = response.get_json()
 
     print(response)
